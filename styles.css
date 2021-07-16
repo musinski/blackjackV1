@@ -23,7 +23,7 @@ body {
 }
 
 .cards {
-    height: 10rem;
+    height: 15rem;
     width: 10rem;
     background-color: #fff;
     font-size: 3rem;
@@ -46,4 +46,9 @@ body {
 #restart-btn {
     padding: 2rem;
     font-size: 2rem;
+}
+
+#dealer-output {
+    font-size: 2rem;
+    margin-top: 1rem;
 }

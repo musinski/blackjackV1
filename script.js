@@ -32,7 +32,11 @@ function hit() {
     
         sum += newCard;
         console.log(newCard);
+        document.getElementById("dealer-output").textContent = "New card is " + newCard;
         document.getElementById("sum").textContent = "Sum = " + sum;
+        if (sum > 21) {
+            document.getElementById("dealer-output").textContent += " Sorry..... you are out!";
+        }
     } else {
         console.log("Sorry...You are out!")
     }
