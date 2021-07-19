@@ -8,17 +8,14 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    
-    <h1>Blackjack</h1>
-    <div class="container">
-        <div class="cards" id="card1"></div>
-        <div class="cards" id="card2"></div>
-    </div>
-    <div class="sum-btn-container">
-        <div id="sum"></div>
-        <button id="hit-btn" onclick="hit()">Hit</button>
-        <button id="restart-btn" onclick="restartGame()">Restart Game</button>
-        <p id="dealer-output"></p>
+    <div>
+        <h1>Blackjack</h1>
+        <p id="message-el">Want to play a round?</p>
+        <p id="cards-el">Cards:</p>
+        <p id="sum-el">Sum:</p>
+        <button id="start-game-btn" onclick="startGame()">START GAME</button>
+        <button id="new-card-btn" onclick="newCard()">NEW CARD</button>
+        <p id="error-message"></p>
     </div>
     <script src="script.js"></script>
 </body>
