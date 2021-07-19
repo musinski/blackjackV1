@@ -30,6 +30,8 @@ function startGame() {
     sumElement.textContent = "Sum: " + sum;
 
     startGameButton.textContent = "New Game?";
+    
+    errorMessage.textContent = "";
 
 }
 
