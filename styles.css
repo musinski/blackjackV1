@@ -1,0 +1,58 @@
+:root {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+*,
+::after,
+::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+body { 
+    background-image: url(images/table.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    height: 100vh;
+    font-size: 3rem;
+}
+
+h1 { 
+    color: goldenrod;
+    font-size: 5rem;
+}
+
+p { 
+    margin-top: 1rem;
+}
+
+.new-cards-div {
+    height: 10rem;
+    width: 5rem;
+    background-color: white;
+    color: black;
+}
+
+#start-game-btn, 
+#new-card-btn {
+    background-color: goldenrod;
+    padding: 1rem;
+    width: 20%;
+    border-radius: 0.5rem;
+    color: #016f32;
+    margin: 1rem 0;
+    font-size: 2rem;
+    border: none;
+    font-weight: bold;
+}
+
+#error-message {
+    background-color: red;
+}
+
