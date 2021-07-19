@@ -12,10 +12,7 @@
 }
 
 body { 
-    background-image: url(images/table.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+    background-color: #35654d;
     color: white;
     font-weight: bold;
     text-align: center;
