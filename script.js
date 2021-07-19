@@ -1,62 +1,64 @@
-let firstCard = Math.floor(Math.random() * 12);
-let secondCard = Math.floor(Math.random() * 12);
+let firstCard = 0;
+let secondCard = 0;
+let sum = 0;
+let blackJackStatus = false;
+let message = "";
+let messageElement = document.getElementById("message-el");
+let sumElement = document.getElementById("sum-el")
+let cardsElement = document.getElementById("cards-el");
+let errorMessage = document.getElementById("error-message");
+let startGameButton = document.getElementById("start-game-btn");
 
-while (firstCard == 0) {
-    firstCard = Math.floor(Math.random() * 12); 
-}
-
-while (secondCard == 0) {
+function startGame() {
+    firstCard = Math.floor(Math.random() * 12);
     secondCard = Math.floor(Math.random() * 12);
-}
 
-let sum = firstCard + secondCard;
-
-document.getElementById("card1").textContent = firstCard;
-document.getElementById("card2").textContent = secondCard;
-document.getElementById("sum").textContent = "Sum = " + sum;
-
-console.log(firstCard);
-console.log(secondCard);
-console.log(sum);
-
-let newCard = 0;
-
-function hit() {
-    if (sum < 21) {
-        console.log("Clicked!")
-        newCard = Math.floor(Math.random() * 12);
-
-        while (newCard == 0) {
-            newCard = Math.floor(Math.random() * 12); 
-        }
-    
-        sum += newCard;
-        console.log(newCard);
-        document.getElementById("dealer-output").textContent = "New card is " + newCard;
-        document.getElementById("sum").textContent = "Sum = " + sum;
-        if (sum > 21) {
-            document.getElementById("dealer-output").textContent += " Sorry..... you are out!";
-        }
-    } else {
-        console.log("Sorry...You are out!")
-    }
-    
-}
-
-function restartGame() {
-    let answer = prompt("Are you sure?")
-    answer = answer.toLowerCase();
-    if (answer == 'y' || answer == 'yes' || answer == "ye") {
-        console.log("Dealing cards...")
+    while (firstCard === 0) {
         firstCard = Math.floor(Math.random() * 12);
+    }
+
+    while (secondCard === 0) { 
         secondCard = Math.floor(Math.random() * 12);
-        sum = firstCard + secondCard;
-        document.getElementById("card1").textContent = firstCard;
-        document.getElementById("card2").textContent = secondCard;
-        document.getElementById("sum").textContent = "Sum = " + sum;
+    }
+
+    sum = firstCard + secondCard;
+
+    checkBlackJackStatus(sum);
+   
+    cardsElement.textContent = "Cards: " + firstCard + ", " + secondCard;
+
+    sumElement.textContent = "Sum: " + sum;
+
+    startGameButton.textContent = "New Game?";
+
+}
+
+function newCard() {
+    if (sum < 21) {
+        let newCard = Math.floor(Math.random() * 12);
+        while (newCard === 0) { 
+            newCard = Math.floor(Math.random() * 12);
+        }
+        sum += newCard;
+        cardsElement.textContent += ", " + newCard;
+        sumElement.textContent = "Sum: " + sum;
+        checkBlackJackStatus(sum);
+    } else {
+        errorMessage.textContent = "You are out.";
     }
 }
 
-
-
-
+function checkBlackJackStatus(sum) {
+    if (sum <= 20) {
+        message = "Do you want a new card?"
+        messageElement.textContent = message;
+    } else if (sum === 21) {
+        blackJackStatus = true;
+        message = "You've got Blackjack.";
+        messageElement.textContent = message;
+    } else {
+        isAlive = false;
+        message = "You're out of the game.";
+        messageElement.textContent = message;
+    }
+}
