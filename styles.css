@@ -4,51 +4,55 @@
 }
 
 *,
-*::before,
-*::after {
-    box-sizing: inherit;
+::after,
+::before {
     margin: 0;
     padding: 0;
+    box-sizing: inherit;
 }
 
-body {
-    background-color: #006A4E;
-}
-
-.container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    justify-items: center;
-}
-
-.cards {
-    height: 15rem;
-    width: 10rem;
-    background-color: #fff;
+body { 
+    background-image: url(images/table.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    height: 100vh;
     font-size: 3rem;
 }
 
-.sum-btn-container {
-    margin-top: 4rem;
-    text-align: center;
+h1 { 
+    color: goldenrod;
+    font-size: 5rem;
 }
 
-#sum {
-    font-size: 4rem;
-}
-
-#hit-btn {
-    padding: 2rem;
-    font-size: 2rem;
-}
-
-#restart-btn {
-    padding: 2rem;
-    font-size: 2rem;
-}
-
-#dealer-output {
-    font-size: 2rem;
+p { 
     margin-top: 1rem;
 }
+
+.new-cards-div {
+    height: 10rem;
+    width: 5rem;
+    background-color: white;
+    color: black;
+}
+
+#start-game-btn, 
+#new-card-btn {
+    background-color: goldenrod;
+    padding: 1rem;
+    width: 20%;
+    border-radius: 0.5rem;
+    color: #016f32;
+    margin: 1rem 0;
+    font-size: 2rem;
+    border: none;
+    font-weight: bold;
+}
+
+#error-message {
+    background-color: red;
+}
+
