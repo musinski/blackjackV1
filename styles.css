@@ -12,12 +12,22 @@
 }
 
 body { 
+    /*background-image: url(images/table.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;*/
     background-color: #35654d;
     color: white;
     font-weight: bold;
-    text-align: center;
     height: 100vh;
     font-size: 3rem;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 h1 { 
@@ -27,6 +37,7 @@ h1 {
 
 p { 
     margin-top: 1rem;
+    text-align: center;
 }
 
 .new-cards-div {
@@ -37,10 +48,12 @@ p {
 }
 
 #start-game-btn, 
-#new-card-btn {
+#new-card-btn,
+#bet-btn,
+#add-funds-btn {
     background-color: goldenrod;
     padding: 1rem;
-    width: 20%;
+    width: 50%;
     border-radius: 0.5rem;
     color: #016f32;
     margin: 1rem 0;
