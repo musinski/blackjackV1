@@ -1,4 +1,5 @@
 let funds = 0;
+let betAmount = 0;
 let cards = [];
 let sum;
 let blackJackStatus = false;
@@ -75,3 +76,8 @@ function addFunds() {
     moneyAmountElement.textContent = "Funds: $" + funds;
 }
 
+function bet() {
+    betAmount = prompt("How much to bet? ");
+    betAmount = Number(betAmount);
+    console.log(betAmount);
+}
