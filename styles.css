@@ -40,6 +40,19 @@ p {
     text-align: center;
 }
 
+#cards-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.cards {
+    background-color: white;
+    height: 10rem;
+    width: 5rem;
+    color: black;
+    margin-left: 1rem;
+}
+
 .new-cards-div {
     height: 10rem;
     width: 5rem;

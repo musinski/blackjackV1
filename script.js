@@ -1,4 +1,3 @@
-let funds = 0;
 let betAmount = 0;
 let cards = [];
 let sum;
@@ -10,16 +9,43 @@ let cardsElement = document.getElementById("cards-el");
 let errorMessage = document.getElementById("error-message");
 let startGameButton = document.getElementById("start-game-btn");
 let moneyAmountElement = document.getElementById("money-amount");
+let betAmountElement = document.getElementById("bet-amount");
+let cardsContainer = document.getElementById("cards-container");
+let cardElement1 = document.createElement("div");
+let cardElement2 = document.createElement("div");
+
+let player = {
+    name: "Player 1",
+    chips: 0
+}
+
+console.log(player.name);
 
 function startGame() {
     cards[0] = getRandomCard();
     cards[1] = getRandomCard();
     sum = cards[0] + cards[1];
     checkBlackJackStatus(sum);
-    cardsElement.textContent = "Cards: " + cards[0] + ", " + cards[1];
+    cardElement1.textContent = cards[0];
+    cardElement2.textContent = cards[1];
+    cardElement1.classList.add("cards");
+    cardElement2.classList.add("cards");
+    cardsContainer.appendChild(cardElement1);
+    cardsContainer.appendChild(cardElement2);
+    cardsElement.textContent = "";
     sumElement.textContent = "Sum: " + sum;
     startGameButton.textContent = "New Game?"; 
     errorMessage.textContent = "";
+    if (player.chips === 0) {
+        addFunds();
+    }
+    if (sum < 21) {
+        player.chips += betAmount;
+        moneyAmountElement.textContent = player.name + ": $" + player.chips;
+    } 
+    betAmount = 0;
+    betAmountElement.textContent = "";
+    
 }
 
 function newCard() {
@@ -33,11 +59,16 @@ function newCard() {
         }
         cards.push(newCard);
         sum += newCard;
-        cardsElement.textContent += ", " + newCard;
+        cardsElement.textContent += newCard + " ";
         sumElement.textContent = "Sum: " + sum;
+        
         checkBlackJackStatus(sum);
     } else if (sum === 21){
         errorMessage.textContent = "Blackjack achieved.";
+        player.chips += bet * 2;
+        moneyAmountElement.textContent = player.name + ": $" + player.chips;
+        betAmount = 0;
+        betAmountElement.textContent = "";
     } else {
         errorMessage.textContent = "You are out.";      
     }
@@ -71,13 +102,20 @@ function getRandomCard() {
 function addFunds() {
     fundsToAdd = prompt("How much to add? ");
     fundsToAdd = Number(fundsToAdd);
-    funds += fundsToAdd;
-    console.log(funds);
-    moneyAmountElement.textContent = "Funds: $" + funds;
+    player.chips += fundsToAdd;
+    console.log(player.chips);
+    moneyAmountElement.textContent = player.name + ": $" + player.chips;
 }
 
 function bet() {
     betAmount = prompt("How much to bet? ");
     betAmount = Number(betAmount);
-    console.log(betAmount);
+    if (betAmount <= player.chips) {
+        betAmountElement.textContent = "Bet: $" + betAmount;
+        player.chips = player.chips - betAmount;
+        moneyAmountElement.textContent = player.name + ": $" + player.chips;
+        errorMessage.textContent = "";
+    } else {
+        errorMessage.textContent = "Add more funds.";
+    }
 }
